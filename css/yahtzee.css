@@ -1,0 +1,187 @@
+/*
+    Noah Tomkins, 000790079
+    Created: 27/10/2020
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h6 {
+    text-align: center;
+    padding: 5px;
+}
+
+header {
+    font-size: 2em;
+    background-color: blanchedalmond;
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: rgb(200, 230, 191);
+}
+
+#player {
+    display: block;
+}
+
+#welcome, #game, #instructions {
+    display: none;
+}
+
+p {
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
+.instructions {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#instructions h6 {
+    font-size: 2em;
+}
+
+.instructions h5 {
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.instructions table {
+    margin-left: 20px;
+}
+
+.instructions img {
+    margin-left: 20px;
+    width: 40%;
+    margin-bottom: 5px;
+    margin-right: 50%;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    max-width: 800px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 3px solid black;
+    border-radius: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    font-size: 1.2em;
+}
+
+label {
+    margin-left: 10px;
+}
+
+input, button {
+    display: block;
+    box-sizing: border-box;
+    width: 97%;
+    font-size: 1.2em;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2px;
+    background-color: white;
+}
+
+table {
+    margin: 10px;
+}
+
+td:nth-child(2) {
+    text-align: right;
+    padding-right: 5px;
+}
+
+.thickBorder {
+    border-bottom: 2px solid black;
+}
+
+#game {
+    display: none; /* js switch to grid */
+    grid-template-columns: auto 220px;
+}
+
+#diceBox {
+    display: none; /* js switch to grid */
+    grid-template-columns: auto;
+}
+
+#gamePlay {
+    height: 450px;
+}
+
+#dice {
+    margin: 10px;
+    display: none; /* js switch to grid */
+    grid-template-columns: auto auto auto auto auto;
+}
+
+#dice div {
+    margin: 10px;
+}
+
+#dice img {
+    width: 100%;
+    max-width: 100px;
+    padding: 5px;
+}
+
+.heldDice {
+    border: 5px solid gold;
+    padding: 0;
+}
+
+#rollDice {
+    margin-top: 200px;
+    height: 100px;
+    font-size: 3em;
+}
+
+h2 {
+    margin-top: 200px;
+    display: none;
+}
+
+#gameButtons {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.scoreAvailable {
+    color: red;
+}
+
+#areYouSure {
+    border: 2px solid black;
+    margin: 20px;
+    display: none; /* js switch to grid */
+    grid-template-columns: auto auto;
+    border-radius: 15px;
+    background-color: wheat;
+}
+
+#areYouSure h4 {
+    grid-column: span 2;
+}
+
+#sureYes {
+    width: 60%;
+    margin-right: 35%;
+    margin-left: 5%;
+}
+#sureNo {
+    width: 60%;
+    margin-left: 35%;
+    margin-right: 5%;
+}

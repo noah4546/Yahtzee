@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!-- 
+    Noah Tomkins, 000790079
+    Created: 27/10/2020
+-->
+<html lang="en">
+    <head>
+        <title>Yahtzee</title>
+        <script src="js/yahtzee.js"></script>
+        <link rel="stylesheet" href="css/yahtzee.css">
+        <link rel="icon" href="images/die5.png">
+
+        <meta charset="UTF-8">
+    </head>
+    <body id="body">
+        <header>
+            <h1>Yahtzee</h1>
+        </header>
+        <main>
+            <div id=container class="container">
+                <div id="player">
+                    <h3>Let's play some Yahtzee!</h3>
+                    <form id="player_form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" placeholder="your name here" required>
+
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" min="1" max="150" value="19">
+
+                        <label for="color">Fav colour:</label>
+                        <input type="color" id="color" value="#b49ee8">
+
+                        <input type="submit">
+                    </form>
+                </div>
+                <div id="welcome">
+                    <h3 id="welcomeMsg">Welcome player to Yahtzee</h3>
+                    <h4>Would you like to start or read the instructions?</h4>
+                    <button type="button" id="start">Start the game!</button>
+                    <button type="button" id="read">Read the instructions</button>
+                </div>
+                <div id="instructions">
+                    <h6>Instructions</h6>
+                    <div class="instructions">
+                        <h5>Object</h5>
+                        <p>Roll dice for scoring combinations, and get the highest total score.</p>
+                        <h5>Game Summary</h5>
+                        <p>
+                            On each turn, roll the dice up to 3 times to get the highest scroing combination for one
+                            of the 13 categories. After you finish rolling, you must choose a score or zero in one of the
+                            13 category boxes on the scoreboard. The game ends when the player have filled in their 13 boxes.
+                            Scores are totaled, including any bonus points. Try to get the highest score.
+                        </p>
+                        <h5>Taking a turn</h5>
+                        <p>
+                            On a turn you may roll the dice up to 3 times, although you may stop and score after your first
+                            or second roll.
+                        </p>
+                        <p>
+                            <strong>First Roll:</strong> Roll all 5 dice. Click any "keepers". You may stop and score now, 
+                            or roll again.
+                        </p>
+                        <p>
+                            <strong>Second roll:</strong> Reroll ANY or ALL dice you want - even "keepers" from the previous roll.
+                            You don't need to declare which combination you're rolling for; you may change your mind after any roll.
+                            You may stop and score, or click any "keepers" and roll a third time.
+                        </p>
+                        <p>
+                            <strong>Third and final roll:</strong> Reroll ANY or ALL dice you want. After your third roll, you 
+                            <em>must</em> fill in a box on the scoreboard with a score or a zero. After you fill in a box, the turn is over.
+                        </p>
+                        <h5>Scoring</h5>
+                        <p>
+                            When you are finished rolling, decide which box to fill in on the scoreboard (clicking the red number).
+                            You must fill in a box on each turn; if you can't (or don't want to) enter a score, you must enter a zero by
+                            clicking on an empty box. Fill in each box only once, in any order, depending on your best scoring option.
+                        </p>
+                        <p>
+                            The score card is divided into an Upper Section and a Lower Section. Scoring combinations for each section
+                            are explained below.
+                        </p>
+                        <table>
+                            <tr>
+                                <th>Upper Section</th>
+                                <th>What to Score</th>
+                            </tr>
+                            <tr>
+                                <td>Ones</td>
+                                <td>Total of Ones only</td>
+                            </tr>
+                            <tr>
+                                <td>Twos</td>
+                                <td>Total of Twos only</td>
+                            </tr>
+                            <tr>
+                                <td>Threes</td>
+                                <td>Total of Threes only</td>
+                            </tr>
+                            <tr>
+                                <td>Fours</td>
+                                <td>Total of Fours only</td>
+                            </tr>
+                            <tr>
+                                <td>Fives</td>
+                                <td>Total of Fives only</td>
+                            </tr>
+                            <tr>
+                                <td>Sixes</td>
+                                <td>Total of Sixes only</td>
+                            </tr>
+                        </table>
+                        <p>
+                            Your goal of in the Upper Section is to score a total of at least 63 points, to earn a 35-point bonus.
+                        </p>
+                        <br>
+                        <p>
+                            Each of the Lower Section scoring combinations is exaplained below.
+                        </p>
+                        <table>
+                            <tr>
+                                <th>Lower Section</th>
+                                <th>What to Score</th>
+                            </tr>
+                            <tr>
+                                <td>3 of a kind</td>
+                                <td>Total of all 5 dice</td>
+                            </tr>
+                            <tr>
+                                <td>4 of a Kind</td>
+                                <td>Total of all 5 dice</td>
+                            </tr>
+                            <tr>
+                                <td>Full House</td>
+                                <td>25 points</td>
+                            </tr>
+                            <tr>
+                                <td>Small straight</td>
+                                <td>30 points</td>
+                            </tr>
+                            <tr>
+                                <td>Large straight</td>
+                                <td>40 points</td>
+                            </tr>
+                            <tr>
+                                <td>YAHTZEE (5 of a kind)</td>
+                                <td>50 points</td>
+                            </tr>
+                            <tr>
+                                <td>Chance</td>
+                                <td>Total of all 5 dice</td>
+                            </tr>
+                        </table>
+                        <p>
+                            <strong>3 of a Kind:</strong> Score in this box only if the dice include 3 or more of the same number.
+                            For example, woth the dice shown bellow you could score 18 points in the <em>3 of a Kind</em> box.
+                        </p>
+                        <img src="images/kind4.png" alt="4 of a kind example">
+                        <br><br>
+                        <p>
+                            <strong>4 of a Kind:</strong> Score in this box only if the dice include 4 or more of the same number.
+                            For example, woth the dice shown bellow you could score 14 points in the <em>4 of a Kind</em> box.
+                        </p>
+                        <img src="images/kind5.png" alt="5 of a kind example">
+                        <br><br>
+                        <p>
+                            <strong>Full House:</strong> Score in this box only if the dice show three of one number and two of another.
+                            Any Full House is worth 25 points. For example, with the dice shown below you could score 25 points in the 
+                            <em>Full House</em> box.
+                        </p>
+                        <img src="images/fullHouse.png" alt="full house example">
+                        <br><br>
+                        <p>
+                            <strong>Small Straight:</strong> Score in this box only if the dice show any sequence of four numbers. Any
+                            Small Straight is worth 30 points. You could score 30 points in the <em>Small Straight</em> box with
+                            any of the three dice combinations shown below.
+                        </p>
+                        <img src="images/smallStraight1.png" alt="small straight option 1">
+                        <img src="images/smallStraight2.png" alt="small straight option 2">
+                        <img src="images/smallStraight3.png" alt="small straight option 3">
+                        <br><br>
+                        <p>
+                            <strong>Large Straight:</strong> Score in this box only if the dice show any sequence of 5 numbers. Any
+                            Large Straight is worth 40 points.
+                        </p>
+                        <p>
+                            You could score 40 points in the <em>Large Straight</em> box with either of the two dice combinations 
+                            shown below.
+                        </p>
+                        <img src="images/largeStraight1.png" alt="large straight option 1">
+                        <img src="images/largeStraight2.png" alt="large straight option 2">
+                        <br><br>
+                        <p>
+                            <strong>YAHTZEE:</strong> Score in this box only if the dice show five of the smae number (5 of a kind).
+                            A YAHTZEE example is shown below.
+                        </p>
+                        <img src="images/yahtzee.png" alt="yahtzee example">
+                        <br><br>
+                        <p>
+                            <strong>Chance:</strong> Score the total of <em>any</em> 5 dice in this box. This catch-all category comes
+                            in handy when you can't (or don't want to) score in another category, and don't want to enter a zero.
+                        </p>
+                        <p>
+                            For example, you could score 22 points in the <em>Chance</em> box with the dice shown below.
+                        </p>
+                        <img src="images/chance.png" alt="chance example">
+                    </div>
+                    <button type="button" id="instStart">Start the game!</button>
+                </div>
+                <div id="game">
+                    <div id="diceBox">
+                        <div id="gamePlay">
+                            <button type="button" id="rollDice">Roll Dice</button>
+                            <h3 id="rollNumber">Roll 0/3</h3>
+                            <h3 id="rollMsg"></h3>
+                            <h2 id="winMsg"></h2>
+                            <h3 id="scoreMsg"></h3>
+                            <div id="areYouSure">
+                                <h4 id="sureMsg">Are you sure you want to score 0 points?</h4>
+                                <button type="button" id="sureNo">No</button>
+                                <button type="button" id="sureYes">Yes</button>
+                            </div>
+                        </div>
+                        <div id="dice">
+                            <div><img id="die1" src="images/die1.png" alt="die 1"></div>
+                            <div><img id="die2" src="images/die2.png" alt="die 2"></div>
+                            <div><img id="die3" src="images/die3.png" alt="die 3"></div>
+                            <div><img id="die4" src="images/die4.png" alt="die 4"></div>
+                            <div><img id="die5" src="images/die5.png" alt="die 5"></div>
+                        </div>
+                    </div>
+                    <div id="scoreboard">
+                        <h3>scoreboard</h3>
+                        <table>
+                            <tr class="thickBorder">
+                                <th>Upper Section</th>
+                                <th>Score</th>
+                            </tr>
+                            <tr>
+                                <td>Ones</td>
+                                <td id="ones"></td>
+                            </tr>
+                            <tr>
+                                <td>Twos</td>
+                                <td id="twos"></td>
+                            </tr>
+                            <tr>
+                                <td>Threes</td>
+                                <td id="threes"></td>
+                            </tr>
+                            <tr>
+                                <td>Fours</td>
+                                <td id="fours"></td>
+                            </tr>
+                            <tr>
+                                <td>Fives</td>
+                                <td id="fives"></td>
+                            </tr>
+                            <tr class="thickBorder">
+                                <td>Sixes</td>
+                                <td id="sixes"></td>
+                            </tr>
+                            <tr>
+                                <td>Sum</td>
+                                <td id="sum"></td>
+                            </tr>
+                            <tr class="thickBorder">
+                                <td>Bonus (>= 63)</td>
+                                <td id="bonus"></td>
+                            </tr>
+                            <tr class="thickBorder">
+                                <th>Lower Section</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>3 of a kind</td>
+                                <td id="kind3"></td>
+                            </tr>
+                            <tr>
+                                <td>4 of a kind</td>
+                                <td id="kind4"></td>
+                            </tr>
+                            <tr>
+                                <td>Full House</td>
+                                <td id="fullHouse"></td>
+                            </tr>
+                            <tr>
+                                <td>Small straight (4)</td>
+                                <td id="smallStraight"></td>
+                            </tr>
+                            <tr>
+                                <td>Large straight (5)</td>
+                                <td id="largeStraight"></td>
+                            </tr>
+                            <tr>
+                                <td>YAHTZEE</td>
+                                <td id="yahtzee"></td>
+                            </tr>
+                            <tr class="thickBorder">
+                                <td>Chance</td>
+                                <td id="chance"></td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td id="total">0</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="gameButtons">
+                        <button type="button" id="gameRead">Instructions</button>
+                        <button type="button" id="newGame">New Game</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
